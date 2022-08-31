@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import servece from "../sevices/service.js";
 
-export default function testecontroller(req: Request, res: Response){
+export default async function testecontroller(req: Request, res: Response){
 
 const {firstUser, secondUser} = req.body 
     console.log(firstUser)
@@ -10,10 +10,11 @@ const {firstUser, secondUser} = req.body
     
     try{
         
-        if(typeof firstUser!=="string"|| typeof secondUser!=="string"){
+        if(typeof firstUser!=="string" || typeof secondUser!=="string"){
             res.status(400).send('os nomes precisão ser strings')
         }
-       const  resultado = servece(firstUser, secondUser)
+       const resultado = await servece(firstUser, secondUser)
+       console.log(resultado)
         res.send(resultado)
     }catch(error){
        

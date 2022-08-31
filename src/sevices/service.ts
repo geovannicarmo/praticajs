@@ -5,11 +5,13 @@ export default async function servece(firstUser: string, secondUser:string){
     try{
 
         
-        const datauser1 =  await axios.get(`https://api.github.com/users/${firstUser}/repos`)
+        let datauser1 =  await axios.get(`https://api.github.com/users/${firstUser}/repos`)
         console.log(datauser1.data[0].stargazers_count)
+        datauser1 = datauser1.data[0].stargazers_count
         
-        const datauser2 =  await axios.get(`https://api.github.com/users/${secondUser}/repos`)
+        let datauser2 =  await axios.get(`https://api.github.com/users/${secondUser}/repos`)
         console.log(datauser2.data[0].stargazers_count)
+        datauser2 = datauser2.data[0].stargazers_count
 
         if(datauser1>datauser2){
             return{	"winner": firstUser, // nulo se empate
