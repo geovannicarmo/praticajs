@@ -8,7 +8,7 @@ const connection = new Pool({
   host: 'localhost',
   port: 5432,
   database: 'starfighters',
-  password: '735644'
+  password: 'senha'
 });
 
 export default connection
